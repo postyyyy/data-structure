@@ -1,0 +1,78 @@
+#include<bits/stdc++.h>//agar humse bole ki creation ka fxn banao to ek node main m bana k insert at last ka code likh do aur samja do usko ki yehh mai karuga
+using namespace std;
+struct node
+{
+    int data;
+    struct node *next;
+};
+void traverse(struct node * head)
+  {  struct node * ptr=head;
+   while(ptr!=NULL)
+  {   cout<<ptr->data<<" ";
+    ptr=ptr->next;
+    
+  }
+   cout<<endl;   
+       }
+struct node * insertfirst(struct node *head,int n)
+{
+    struct node * ptr=(struct node*)malloc(sizeof(struct node));
+    ptr->data=n;
+    ptr->next=head;
+    head=ptr;
+    return head;
+}
+struct node* insertlast(struct node *head,int n)
+{
+    struct node *ptr=(struct node*)malloc(sizeof(struct node));
+    ptr->data=n;
+    struct node *k=head;
+    while(k->next!=NULL)
+    {
+        k=k->next;
+    }
+    k->next=ptr;
+    ptr->next=NULL;
+    
+    
+    
+    return head;
+}
+struct node* insertindex(struct node* head ,int index,int n)
+{ struct node *ptr=(struct node*)malloc(sizeof(struct node));
+struct node * k=head;
+ptr->data=n;
+    int i=0;
+    while(i!=index-1)
+    {k=k->next;
+    i++;
+    }
+    ptr->next=k->next;
+    k->next=ptr;
+    return head;
+}
+int main()
+{
+   struct node *head=(struct node*)malloc(sizeof(struct node));
+   struct node *second=(struct node*)malloc(sizeof(struct node));
+   struct node *third=(struct node*)malloc(sizeof(struct node));
+    struct node *forth=(struct node*)malloc(sizeof(struct node));
+   head->data=111115;
+   head->next=second;
+   second->data=101111;
+   second->next=third;
+   third->data=100044444;
+   third->next=forth;
+   forth->data=1203;
+   forth->next=NULL;
+   traverse(head);
+   head=insertfirst(head,69);
+  traverse(head); 
+  head=insertlast(head,890);
+traverse(head); 
+  head=insertlast(head,8900);
+traverse(head); 
+ head=insertindex(head,2,5);
+traverse(head); 
+    return 0;
+}
