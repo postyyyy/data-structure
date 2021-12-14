@@ -1,0 +1,32 @@
+class Solution {
+public:
+    ListNode *detectcycle(ListNode *head)
+    {
+        ListNode * st=head;
+        ListNode * lt=head;
+        while(lt!=NULL && lt->next!=NULL)
+        {
+            st=st->next;        //detecting a loop
+            lt=lt->next->next;
+            if(st==lt)
+                return st;
+        }
+        return NULL;
+    }
+    ListNode *detectCycle(ListNode *head) {
+        ListNode *ptr=detectcycle(head);
+        ListNode * start=head;
+        if(ptr==NULL)
+            return NULL;
+        while(start!=ptr)                       //returning the address of the  node at which it sstart
+        { start=start->next;
+         ptr=ptr->next;
+        }
+        if(start==ptr)
+        return start;
+        else
+            return NULL;
+    
+        
+    }
+};
