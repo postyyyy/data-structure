@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+#define n 5
+int front = -1, rear = -1;
+int a[n];
+void enque(int k) {
+
+  if (front == -1 && rear == -1) {
+    front=0;
+    rear=0;
+    a[rear] = k;
+  } else if (rear == n - 1) {
+    cout << "overflow" << endl;
+  } else {
+    rear++;
+    a[rear] = k;
+  }
+
+}
+void deeque() {
+  
+  if (front == -1 && rear == -1) {
+    cout << "underflow" << endl;
+  } else if (rear == front) {//condition for empty q
+        cout << a[rear] << endl;
+        front = -1;
+        rear = -1;
+  } else {
+    cout << a[front] << endl;
+    front++;
+  }
+}
+void printt() {
+  if(front==-1&& rear==-1)
+  cout<<"queuq is empty"<<endl;
+  for (int i = front; i <= rear; i++) {
+    cout << a[i] << " ";
+  }
+  cout << endl;
+}
+void peek()//pahla element de dega
+{ if(front==-1&& rear==-1)
+  cout<<"queuq is empty"<<endl;
+  else
+  cout<<a[front];
+    
+}
+int main() {
+  enque(10);
+  enque(20);
+  enque(30);
+  printt();
+   deeque();
+  enque(110);
+    enque(12121);
+    enque(11);
+    enque(111);
+    printt();
+  return 0;
+}
