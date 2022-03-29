@@ -1,0 +1,98 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+struct node {
+  int data;
+  struct node * next;
+
+};
+node * createll(int n) {
+  node * head;
+  node * tt;
+
+  int kk = 0;
+  while (kk <= n - 1) {
+    if (kk == 0) {
+      int val;
+      cin >> val;
+      node * temp = new node();
+      temp -> data = val;
+      temp -> next = nullptr;
+      head = temp;
+      tt = temp;
+    } else {
+      int ll;
+      cin >> ll;
+      node * ptr = new node();
+      ptr -> data = ll;
+      ptr -> next = nullptr;
+      tt -> next = ptr;
+      tt = tt -> next;
+    }
+    
+    kk++;
+  }
+  return head;
+}
+
+void printt(node * ptr) {
+
+  node * headd = ptr;
+  while (ptr != NULL) {
+    cout << ptr -> data << " ";
+    ptr = ptr -> next;
+  }
+  cout<<endl;
+}
+node* insertf(node* head,int value)
+{
+  node* ptr=new node();
+  ptr->data=value;
+  ptr->next=head;
+  head=ptr;
+  return head;
+}
+node* insertatindex(node* head,int value,int index)
+{ node* kk=head;
+  node* ptr=new node();
+  ptr->data=value;
+  int k=0;
+  while(k!=index-1){
+  kk=kk->next;
+    k++;
+  }
+  ptr->next=kk->next;
+   kk->next=ptr;
+
+return head;
+}
+node* insertlast(node* head,int value)
+{ node* ptr=new node();
+  ptr->data=value;
+  node*kk=head;
+  while(kk->next!=NULL)
+  {
+    kk=kk->next;
+  }
+ kk->next=ptr;
+ ptr->next=NULL;
+ return head;
+
+
+
+}
+
+int main() {
+  int n;
+  cin >> n;
+  node * head;
+  head = createll(n);
+  printt(head);
+  head=insertf(head,5);
+  printt(head);
+  head=insertatindex(head,11,3);
+  printt(head);
+head=insertlast(head,69);
+  printt(head);
+  return 0;
+}
