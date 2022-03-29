@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+struct node {
+  int data;
+  struct node * next;
+
+};
+node * createll(int n) {
+  node * head;
+  node * tt;
+
+  int kk = 0;
+  while (kk <= n - 1) {
+    if (kk == 0) {
+      int val;
+      cin >> val;
+      node * temp = new node();
+      temp -> data = val;
+      temp -> next = nullptr;
+      head = temp;
+      tt = temp;
+    } else {
+      int ll;
+      cin >> ll;
+      node * ptr = new node();
+      ptr -> data = ll;
+      ptr -> next = nullptr;
+      tt -> next = ptr;
+      tt = tt -> next;
+    }
+    
+    kk++;
+  }
+  return head;
+}
+
+void printt(node * ptr) {
+  cout << " pp";
+  node * headd = ptr;
+  while (ptr != NULL) {
+    cout << ptr -> data << " ";
+    ptr = ptr -> next;
+  }
+}
+int main() {
+  int n;
+  cin >> n;
+  node * head;
+  head = createll(n);
+  printt(head);
+
+  return 0;
+}
