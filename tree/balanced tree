@@ -1,0 +1,26 @@
+class Solution {
+public:
+     
+     int  height(TreeNode* root)
+    {
+        if(root==NULL)
+            return 0;//0 return karne p ans nodes calculate karne k basis m ans deta hai but -1 karne m answer according to numbers of edge from leaf node dega.
+           return max(height(root->left),height(root->right))+1;
+       
+    }
+    
+
+    bool isBalanced(TreeNode* root) {
+      if(root==NULL)
+          return true;
+        int k1=height(root->left);
+        int k2=height(root->right);
+        int ans=abs(k1-k2);
+        return (ans<2 &&isBalanced(root->left)&&isBalanced(root->right));
+        
+    }
+};any tree is balanced if for all node this condition satisfied
+{ for a node difference between height of left and right subtree should be less than 2
+
+
+}
